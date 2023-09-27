@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int partition(int arr[], int h , int l) //hoare's method
+{
+    int pivot=arr[l];
+    int i=l-1;   //i=-1
+    int j=h+1;   //j=8
+    cout<<pivot<<endl;
+    while(true)
+    {
+        do{
+            i++;   //incrementing i until the condition is statisfied 
+        }while(arr[i]<pivot);
+        do{
+           j--;     //incrementing j until the condition is statisfied
+        }while(arr[j]>pivot);
+        if(i>=j)
+        return j;  // breaking the while loop after i>j
+        else
+        swap(arr[i],arr[j]);   // else swapping arr[i] & arr[j]
+    }
+} 
+int main()
+{ 
+    int arr[8]={5,3,8,4,2,7,1,10};
+    partition(arr,7,0);
+    for(int x:arr)
+    cout<<x<<" ";
+    return 0;
+}
