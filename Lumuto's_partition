@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+void swap(int &&a, int &&b)   //swapping two numbers using r varible
+{ 
+    int temp;
+    temp=a;
+    a=b;
+    b=temp;
+}
+void partition(int arr[],  int h, int pivot)   //using lumuto's method to swap two numbers. 
+{
+    pivot=arr[h];
+    int j=h-1;
+    int i=-1;
+    for(int w=0;w<=j;w++)
+    {
+        if(pivot>arr[w])
+        {
+            i++;    //incrementing i only if condition is satisfied.
+            swap(arr[i],arr[w]);    //swapping two numbers if pivot>arr[w]. 
+        }
+    }
+    swap(arr[i+1],arr[h]);   //swappning the pivot since parition is needed 
+}
+int main()
+{
+    int arr[7]={10,80,30,90,40,50,70};
+    partition(arr,6,6);
+    for(int i=0;i<7;i++)    //displaying the array 
+        cout<<arr[i]<<" ";
+    return 0;
+}
