@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-void partition(int array[],int high, int low , int pivot)  //naive partition 
+int partition(int array[],int high, int low , int pivot)  //naive partition 
 {
     int temp[high-low+1];
     int index;
@@ -24,6 +24,7 @@ void partition(int array[],int high, int low , int pivot)  //naive partition
     {
         array[i]=temp[i];
     }
+    return i+1;  //returning the pivot's position. 
 }
 int main()
 {
