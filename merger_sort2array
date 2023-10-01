@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a[3]={10,20,30};   
+    int b[3]={40,50,60};
+    int i=0,j=0;
+    while(j<3 && i<3)
+    {
+        if(a[i]<=b[j])
+        {
+            cout<<a[i]<<" ";   
+            i++;
+        }
+        else 
+        {
+            cout<<b[j]<<" ";
+            j++;
+        }
+    }
+    while(i<3)
+    {cout<<a[i]<<" "; 
+    i++;}
+    while(j<3)
+    {cout<<b[j]<<" "; 
+    j++;}
+    return 0;
+}
