@@ -20,7 +20,7 @@ void merge(int arr[], int low, int mid , int high)
     j=0;   //representing index of arr2 by j
     while(i<(mid-low) && j<(high-mid+1))
     {
-        if(arr1[i]>arr2[j])   // if element in arr1 is greater than that of arr2 then we push arr2 element in arr3
+        if(arr1[i]>=arr2[j])   // if element in arr1 is greater than that of arr2 then we push arr2 element in arr3
         {
             arr3[in]=arr2[j];
             in++;
@@ -54,5 +54,6 @@ int main()
 {
     int arr[6]={10,20,35,5,50,50};   
     merge(arr,0,3,5);   //array which we have passed as parameter must be sorted till the mid in  merge sort
-    return 0;
+    return 0;      // we can also pass two arrays as parameters where these both arrays are sorted in their own manner
+               //here i have passed only single array where it is sorted till position 3 and again after it is is sorted in different maanner. 
 }
