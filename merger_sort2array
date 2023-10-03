@@ -1,28 +1,58 @@
 #include<iostream>
 using namespace std;
-int main()   // in this sorting method always two arrays are in sorted way
+void merge(int arr[], int low, int mid , int high)
 {
-    int a[3]={10,20,30};   
-    int b[3]={40,50,60};
-    int i=0,j=0;
-    while(j<3 && i<3)
+    int arr1[mid-low];   
+    int arr2[high-mid+1];  
+    int arr3[high+1];
+    for(int i=0;i<mid;i++)    //creating first array out of arr i.e arr1
     {
-        if(a[i]<=b[j])
-        {
-            cout<<a[i]<<" ";   
-            i++;
-        }
-        else 
-        {
-            cout<<b[j]<<" ";
-            j++;
-        }
+        arr1[i]=arr[low+i];
     }
-    while(i<3)
-    {cout<<a[i]<<" "; 
-    i++;}
-    while(j<3)
-    {cout<<b[j]<<" "; 
-    j++;}
+    int j=0;
+    for(int i=(high-mid+1);i<=high;i++)   //creating second array out of arr i.e arr2
+    {
+        arr2[j]=arr[i];
+        j++;
+    }
+    int in=0;  //representing index of arr3 by in
+    int i=0;   //representing index of arr1  by i
+    j=0;   //representing index of arr2 by j
+    while(i<(mid-low) && j<(high-mid+1))
+    {
+        if(arr1[i]>arr2[j])   // if element in arr1 is greater than that of arr2 then we push arr2 element in arr3
+        {
+            arr3[in]=arr2[j];
+            in++;
+            j++;
+        }  
+        else    // else we do this 
+        {
+            arr3[in]=arr1[i];
+            i++;
+            in++;
+        }
+    } 
+    while(i<(mid-low))    // if all elements are j are transfered this means that the elements are i might be still left so
+    {                     // so we do this in order to transfer those elements in arr3
+        arr3[in]=arr1[i];
+        i++;
+        in++;
+    }
+    while(j<(high-mid+1))
+    {
+        arr3[in]=arr2[j];
+        j++;
+        in++;
+    }
+    for(int x:arr3)   //printing the array which we have created 
+    {
+        cout<<x<<" ";
+    }
+}
+int main() 
+{
+    int arr[6]={10,20,35,5,50,50};   
+    merge(arr,0,3,5);   //array which we have passed as parameter must be sorted till the mid in  merge sort
     return 0;
 }
