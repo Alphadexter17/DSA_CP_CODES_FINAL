@@ -12,7 +12,7 @@ struct node{
 void print_list(node *point)
 {
     node *pointer=point;
-    if(pointer->next!=NULL)
+    if(point!=NULL)
     {
         cout<<pointer->data<<" ";
         print_list(pointer->next);
