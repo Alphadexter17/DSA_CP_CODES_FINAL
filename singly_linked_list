@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+struct node    //creating a node with two members data and next pointer. 
+{ 
+    int data;
+    node *next;
+    node (int item)
+    {  
+        data=item;
+        next=NULL;
+    }
+};
+void display2(node *next)    //dipslaying the linked list using recursion
+{
+    node *temp;
+    temp=next;
+    if(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+        display2(temp);
+    }
+}
+node *insert_begin(node *head,int item)    //inserting the eleemt item in the begining of the linked list
+{
+    node *newnode=new node(item);
+    newnode->next=head;
+    return newnode;
+}
+node *insert_end(node *head,int item)     //inserting the element at the end of the linked list
+{
+    node *temp=new node(item);
+    node *cond;
+    cond=head;
+    if(head==NULL)
+    {
+        return temp;
+    }
+    else
+    {
+        while(cond->next!=NULL)
+    {
+        cond=cond->next;
+    }
+    cond->next=temp;
+    return head;
+    } 
+} 
+node *delete_begin(node *head)      //deleting the item at the begining of the linked list
+{
+    node *temp=head->next;
+    if(head==NULL)
+    return NULL;
+    temp=temp->next;
+    delete head;
+    return temp;
+}
+node *delete_last(node *head)   //deleting the item at the end of the linked list
+{
+    node *temp=head;
+    if(head==NULL)
+    return NULL;
+    else
+    {
+        while(temp->next->next!=NULL)
+        {
+            temp=temp->next;
+        }
+        delete (temp->next);
+        temp->next=NULL;
+        return head;
+    }
+}
+int main()
+{
+    node *head=new node(10);
+    head->next=new node(20);
+    head->next->next=new node(30);
+    head->next->next->next=new node(40);
+    head=insert_end(head,50);
+    head=insert_end(head,60);
+    display2(head);
+    head=insert_begin(head,5);
+    cout<<endl;
+    head=delete_begin(head);
+    display2(head);
+    head=delete_last(head);
+    cout<<endl;
+    display2(head);
+    return 0;
+}
